@@ -1,22 +1,9 @@
 name: InfectedManhunt
 version: '${project.version}'
-main: com.mujeb.infectedmanhunt.InfectedManhuntPlugin
+main: com.ronlab.infectedmanhunt.InfectedManhuntPlugin
 api-version: '1.21'
-authors: [muj3b]
-description: Infected Manhunt mode where speedrunners become infected hunters on death.
-website: https://www.youtube.com/watch?v=ReZMjIoMBwY
-
-commands:
-  infected:
-    description: Control Infected Manhunt
-    usage: /<command>
-    permission: infectedmanhunt.command
-    aliases: [infectedmanhunt]
-
-permissions:
-  infectedmanhunt.admin:
-    default: op
-    description: Full control over InfectedManhunt
-  infectedmanhunt.command:
-    default: op
-    description: Basic access (status/help)
+load: BEFORE
+join-classpath: true
+depend: [RonlabGameAssistant]
+description: Infected Manhunt mode companion plugin for Ronlab Game Assistant.
+authors: [ronlab]
