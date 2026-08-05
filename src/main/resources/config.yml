@@ -1,25 +1,59 @@
-# InfectedManhunt Configuration
+# ==============================================================================
+# InfectedManhunt Configuration Schema & CPMK Specification
+# Target Environment: Java 25 | PaperMC 26.2
+# ==============================================================================
+# SOLO QA DEVELOPER MODE NOTICE:
+# When a minigame session starts with only 1 player (initialPlayerCount == 1),
+# Solo QA Developer Mode is active. In this mode, win condition checks are frozen
+# so that the solo player is not immediately declared winner or loser. This allows
+# continuous manual QA testing of map reset routines, tracking compass functionality,
+# nether/end portal transitions, and arena mechanics without session teardown.
+# ==============================================================================
 
 start:
+  # Whether players are automatically teleported to their designated team spawn vectors upon match start.
   teleport_to_spawn: true
+  # Whether title/subtitle announcements ("YOU ARE INFECTED!", "SPEEDRUNNERS") are sent on start.
   announce_titles: true
+  # Global time limit for the match in seconds (0 = unlimited).
+  time_limit_seconds: 3600
 
-respawn:
-  # vanilla | world_spawn | fixed
-  mode: vanilla
+# Spawn and pedestal vector locations for match initialisation and spectator fallbacks.
+spawn:
   world: "world"
   x: 0.5
   y: 64.0
   z: 0.5
+  yaw: 0.0
+  pitch: 0.0
+
+# Y-level void fall threshold. Players falling below this coordinate trigger automated spawn bounds checks.
+fall_threshold_y: -64.0
+
+respawn:
+  # Respawn handling mode: 'vanilla' (default bed/anchor), 'world_spawn' (world default), or 'fixed' (specified coordinates)
+  mode: "vanilla"
+  world: "world"
+  x: 0.5
+  y: 64.0
+  z: 0.5
+  yaw: 0.0
+  pitch: 0.0
 
 tracking:
+  # Interval in server ticks (20 ticks = 1 second) between tracking compass metadata updates.
   update_ticks: 20
+  # Minimum cooldown in seconds between tracking status messages sent to hunter action bars/chat.
   message_cooldown_seconds: 5
-  # When true, tell hunters when tracking uses last-known locations
+  # When true, alerts hunters when their compass is tracking a runner's last-known portal location across dimensions.
   notify_last_known: true
 
 teams:
+  # Display color formatting for Speedrunner team members (e.g. GREEN, LIGHT_PURPLE, CYAN)
   speedrunner_color: "GREEN"
+  # Display color formatting for Infected team members (e.g. RED, DARK_RED)
   infected_color: "RED"
+  # Prefix prepended to Speedrunner player names in team chat and scoreboards.
   speedrunner_prefix: "§a[R] "
+  # Prefix prepended to Infected player names in team chat and scoreboards.
   infected_prefix: "§c[INF] "

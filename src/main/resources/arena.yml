@@ -1,0 +1,53 @@
+# ==============================================================================
+# InfectedManhunt Arena Configuration & Vector Specifications
+# Target Environment: Java 25 | PaperMC 26.2
+# ==============================================================================
+# SOLO QA DEVELOPER MODE NOTICE:
+# In single-player QA environments (initialPlayerCount == 1), arena boundary and
+# fall checks function normally while win condition evaluation remains frozen.
+# ==============================================================================
+
+arena:
+  # Unique identifier for the arena layout
+  id: "default_arena"
+  name: "Infected Manhunt Overworld Arena"
+
+  # Match time limit in seconds for this arena (0 = use config.yml global default)
+  time_limit_seconds: 3600
+
+  # Y-level void fall threshold for arena bounds enforcement
+  fall_threshold_y: -64.0
+
+  # Team Spawn Vectors
+  spawns:
+    speedrunners:
+      world: "world"
+      x: 0.5
+      y: 64.0
+      z: 0.5
+      yaw: 0.0
+      pitch: 0.0
+    infected:
+      world: "world"
+      x: 10.5
+      y: 64.0
+      z: 10.5
+      yaw: 180.0
+      pitch: 0.0
+
+  # Pedestal locations for pre-game countdown and lobby placement
+  pedestals:
+    - id: 1
+      world: "world"
+      x: 0.5
+      y: 65.0
+      z: 0.5
+      yaw: 0.0
+      pitch: 0.0
+    - id: 2
+      world: "world"
+      x: 5.5
+      y: 65.0
+      z: 5.5
+      yaw: 90.0
+      pitch: 0.0

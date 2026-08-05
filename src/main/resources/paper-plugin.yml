@@ -3,5 +3,11 @@ version: '${project.version}'
 main: com.ronlab.infectedmanhunt.InfectedManhuntPlugin
 api-version: '26.2'
 description: Infected Manhunt mode companion plugin for Ronlab Game Assistant.
-authors: [ronlab]
-depend: [RonlabGameAssistant]
+authors:
+  - ronlab
+dependencies:
+  server:
+    RonlabGameAssistant:
+      required: true
+      join-classpath: true
+      load: BEFORE
